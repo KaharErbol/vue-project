@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Project</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <h1>Book Warm</h1>
+  <div id="app">
+    <div v-if="showBooks">
+      <h3>{{ title }} - {{ author }} - {{ year }}</h3>
+    <p>Notes: {{ notes }}</p>
+    <div @click="changeNotes('I think there is a movie about this story.')">Update Notes</div>
+    </div>
+
+    <button @click="toggleShowBooks">
+      <span v-if="showBooks">Hide Books</span>
+      <span v-else>Show Books</span>
+    </button>
+    <p>-----------</p>
+    <button v-on:click="pageRead--">-</button> 
+      <p>{{ pageRead }}</p> 
+    <button v-on:click="pageRead++">+</button>
+  </div>
+
+  <p>The Vue APP is Not Mounted Here</p>
+
+  <script src="./app.js"></script>
+</body>
+</html>
