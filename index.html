@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue Project</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    .box {
+      padding: 100px 0;
+      width: 400px;
+      text-align: center;
+      background: #ddd;
+      margin: 20px;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
   <h1>Book Warm</h1>
@@ -15,6 +25,8 @@
     <div @click="changeNotes('I think there is a movie about this story.')">Update Notes</div>
     </div>
 
+    <br>
+
     <button @click="toggleShowBooks">
       <span v-if="showBooks">Hide Books</span>
       <span v-else>Show Books</span>
@@ -23,6 +35,14 @@
     <button v-on:click="pageRead--">-</button> 
       <p>{{ pageRead }}</p> 
     <button v-on:click="pageRead++">+</button>
+
+
+  <br>
+
+  <div class="box" @mouseover="handleEvent">mouseover</div>
+  <div class="box" @mouseleave="handleEvent">mouseleave</div>
+  <div class="box" @dblclick="handleEvent">double click</div>
+  <div class="box" ></div>
   </div>
 
   <p>The Vue APP is Not Mounted Here</p>
