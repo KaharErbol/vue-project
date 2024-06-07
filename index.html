@@ -14,16 +14,44 @@
       margin: 20px;
       display: inline-block;
     }
+
+    body {
+      background: #eee;
+      max-width: 960px;
+      margin: 20px auto;
+    }
+
+    p, h3, ul{
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style-type: none;
+      background: #fff;
+      margin: 20px auto;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    li.fav {
+      background: rgb(76, 144, 167);
+      color: white;
+    }
   </style>
 </head>
 <body>
   <h1>Book Warm</h1>
   <div id="app">
-    <div v-if="showBooks">
+    <div>
       <h3>{{ title }} - {{ author }} - {{ year }}</h3>
     <p>Notes: {{ notes }}</p>
     <div @click="changeNotes('I think there is a movie about this story.')">Update Notes</div>
     </div>
+    <a :href="url" target="_blank">Website</a>
 
     <br>
 
@@ -31,18 +59,33 @@
       <span v-if="showBooks">Hide Books</span>
       <span v-else>Show Books</span>
     </button>
+
+    <br>
+
+    <div v-if="showBooks">
+      <ul>
+        <li v-for="book in books" :class="{ fav: book.isFav }" @click="toggleFav(book)">
+          <img :src="book.img" :alt="book.title">
+          <h3>{{ book.title }}</h3>
+          <p>{{ book.author }}</p>
+        </li>
+      </ul>
+    </div>
+
+    <p>{{ filteredBooks }}</p>
+
     <p>-----------</p>
     <button v-on:click="pageRead--">-</button> 
       <p>{{ pageRead }}</p> 
     <button v-on:click="pageRead++">+</button>
 
 
-  <br>
+    <br>
 
-  <div class="box" @mouseover="handleEvent">mouseover</div>
-  <div class="box" @mouseleave="handleEvent">mouseleave</div>
-  <div class="box" @dblclick="handleEvent">double click</div>
-  <div class="box" ></div>
+    <div class="box" @mouseover="handleEvent($event, 5)">mouseover</div>
+    <div class="box" @mouseleave="handleEvent">mouseleave</div>
+    <div class="box" @dblclick="handleEvent">double click</div>
+    <div class="box" @mousemove="handleMousemove">Mousemove: ({{ x }}, {{ y }})</div>
   </div>
 
   <p>The Vue APP is Not Mounted Here</p>

@@ -24,4 +24,9 @@ Have access to properties we need to use `this`.
 - v-show -> only changes the css to show based on the condition.
 
 ## Mouse Events
+When a argument passed into function, it will become 1st argument in js file.
+If we wsant the event argument we do this:
+ `@mouseover="handleEvent($event, 5)"`
 
+## v-bind
+`:alt='book.title'`
